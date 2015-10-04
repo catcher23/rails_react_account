@@ -7,12 +7,18 @@ var Records = React.createClass({
       return { records: [] };
     },
 
+    addRecord: function(record) {
+      var records = React.addons.update(this.state.records, { $push: [record] });
+      this.setState({ records: records });
+    },
+
 render: function() {
   return(
     <div className='records'>
       <h2 className='title'>
         Records
       </h2>
+          <RecordForm handleNewRecord={this.addRecord} />
       <table className='table table-bordered'>
           <thead>
             <tr>
